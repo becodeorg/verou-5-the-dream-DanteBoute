@@ -9,13 +9,16 @@
 <body>
     <main>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); 
-        ?>" method="POST"><label for="currency">Enter amount:</label><br>
+        ?>" method="POST"><label for="currency">Enter amount in euros:</label><br>
         <input type="number" id="amount" name="amount" step="0.01" min="0"><br><br>
         <select name="currency">currency
             <option value="dollar">Dollar</option>
             <option value="peso">Peso</option>
             <option value="pound">Pound</option>
             <option value="pkr">Pakistani Rupee</option>
+            <option value="pln">Zloty</option>
+            <option value="lira">Lira</option>
+
         </select>
         <br>
         <hr>
@@ -55,10 +58,16 @@
                     case "pkr":
                         $value = $amount*304.49;
                         break;
+                    case "pln":
+                        $value = $amount*4.37156;
+                        break;
+                    case "lira":
+                        $value = $amount*32.54;
+                        break;
                     default:
                     echo "<p class='calc-error'>Something went HORRIBLY wrong!</p>";
                 }
-                echo "<p class='currency_output'> Result = " . $value . " " . $currency . "s" . "</p>";
+                echo $amount . " euros" . "<p class='currency_output'> is equal to " . $value . " " . $currency . "s" . "</p>";
             } 
         }
         ?>
